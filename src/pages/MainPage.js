@@ -3,6 +3,7 @@ import { BrowserRouter } from 'react-router-dom'
 
 import AppRoute from './../router/AppRoute'
 import 'bootstrap/dist/css/bootstrap.css';
+import './../assets/css/main.css';
 
 export default class MainPage extends Component {
     constructor(props){

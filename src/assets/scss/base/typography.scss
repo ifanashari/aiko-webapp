@@ -1,0 +1,29 @@
+// 525252
+// 414141
+//
+//
+
+$primary: #ca3e47;
+$secondary: #313131;
+// $primary: #ca3e47;
+// $primary: #ca3e47;
+
+@font-face{
+    font-family: "mison";
+    src: url('./../fonts/Maison\ Neue\ Mono.ttf')
+}
+
+.section_title{
+    position: relative;
+    width: fit-content;
+
+    &::after{
+        content: '';
+        width: 70%;
+        height: 3px;
+        position: absolute;
+        bottom: -6px;
+        left: 0;
+        background: $secondary;
+    }
+}
