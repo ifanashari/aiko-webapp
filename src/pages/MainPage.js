@@ -1,21 +1,14 @@
 import React, { Component } from 'react'
 import { BrowserRouter } from 'react-router-dom'
+import { connect } from 'react-redux'
 
 import AppRoute from './../router/AppRoute'
 import 'bootstrap/dist/css/bootstrap.css';
 import './../assets/css/main.css';
 
-export default class MainPage extends Component {
-    constructor(props){
-        super(props)
-
-        this.state = {
-            dashboardLayout: false
-        }
-    }
-
+class MainPage extends Component {
     render() {
-        if(this.state.dashboardLayout){
+        if(this.props.routeState.dashboardLayout){
             return (
                 <div>
                     dashboard
@@ -35,3 +28,22 @@ export default class MainPage extends Component {
         }
     }
 }
+
+const mapStateToProps = (state) => {
+    return{
+        routeState: state.routeState
+    }
+}
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        // updateLayout: (payload) => {
+        //     dispatch({
+        //         type: 'UPDATE_LAYOUT',
+        //         payload: payload
+        //     })
+        // },
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(MainPage)

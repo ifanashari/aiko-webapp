@@ -1,25 +1,40 @@
 import React, { Component } from 'react'
-import { Container, Row, Col } from 'reactstrap'
-// import classNames from 'classnames'
-import { Doughnut } from 'react-chartjs-2'
+import {
+    Container,
+    Row,
+    Col,
+    Button
+} from 'reactstrap'
 
-export default class LandingPage extends Component {
+// import { Doughnut } from 'react-chartjs-2'
+import { routeChecker } from './../../mixins/route-checker'
+import { Link } from 'react-router-dom'
+import { connect } from 'react-redux'
+
+class LandingPage extends Component {
+    // ==========><>|lifecycle|<><==========
+
+    componentDidMount(){
+        this.props.updateLayout(routeChecker())
+    }
+
+    // ==========><>|lifecycle|<><==========
+
     render() {
-        const tmpData = {
-            datasets: [
-                {
-                    label: "Population (millions)",
-                    backgroundColor: ["#3e95cd", "#8e5ea2","#3cba9f","#e8c3b9","#c45850"],
-                    data: [70, 30]
-                }
-            ],
+        // const tmpData = {
+        //     datasets: [
+        //         {
+        //             label: "Population (millions)",
+        //             backgroundColor: ["#3e95cd", "#8e5ea2","#3cba9f","#e8c3b9","#c45850"],
+        //             data: [70, 30]
+        //         }
+        //     ],
 
-            labels: [
-                "Done",
-                ""
-            ]
-        }
-
+        //     labels: [
+        //         "Done",
+        //         ""
+        //     ]
+        // }
 
         return (
             <div>
@@ -31,15 +46,21 @@ export default class LandingPage extends Component {
                                     Welcome to <span className="font-weight-light">AIKO</span>
                                 </h2>
 
-                                <p>
+                                <p className="my-3">
                                     lorem ipsum dolor sit amet
                                 </p>
+
+                                <Link to="/dashboard">
+                                    <Button>
+                                        To Dashboard
+                                    </Button>
+                                </Link>
                             </Col>
                         </Row>
                     </Container>
                 </div>
 
-                <div className="task_preview">
+                {/* <div className="task_preview">
                     <Container>
                         <Row>
                             <Col md={12}>
@@ -78,8 +99,27 @@ export default class LandingPage extends Component {
                             </Col>
                         </Row>
                     </Container>
-                </div>
+                </div> */}
             </div>
         )
     }
 }
+
+const mapStateToProps = (state) => {
+    return{
+        routeState: state.routeState
+    }
+}
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        updateLayout: (payload) => {
+            dispatch({
+                type: 'UPDATE_LAYOUT',
+                payload: payload
+            })
+        },
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(LandingPage)
