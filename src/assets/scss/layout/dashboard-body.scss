@@ -1,0 +1,12 @@
+.dashboard_body{
+    width: 100%;
+    height: fit-content;
+    display: flex;
+
+    &-content{
+        position: relative;
+        width: calc(100% - 50px);
+        height: fit-content;
+        margin-left: auto;
+    }
+}

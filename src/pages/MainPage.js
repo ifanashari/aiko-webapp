@@ -5,17 +5,20 @@ import { connect } from 'react-redux'
 import AppRoute from './../router/AppRoute'
 import 'bootstrap/dist/css/bootstrap.css';
 import './../assets/css/main.css';
+import SideNavigation from './../components/SideNavigation';
 
 class MainPage extends Component {
     render() {
         if(this.props.routeState.dashboardLayout){
             return (
-                <div>
-                    dashboard
-                    <BrowserRouter>
-                        <AppRoute />
-                    </BrowserRouter>
-                </div>
+                <BrowserRouter>
+                    <SideNavigation />
+                    <div className="dashboard_body">
+                        <div className="dashboard_body-content">
+                            <AppRoute />
+                        </div>
+                    </div>
+                </BrowserRouter>
             )
         } else{
             return (
