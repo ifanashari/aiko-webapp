@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
-import { routeChecker } from './../../mixins/route-checker'
 import { connect } from 'react-redux'
-import { Link } from 'react-router-dom'
-import { Button } from 'reactstrap'
+import { Row, Col } from 'reactstrap'
+import { routeChecker } from './../../mixins/route-checker'
+
 import PageTitle from './../../components/PageTitle'
 
-class DashboardPage extends Component {
+class TaskListPage extends Component {
 
     // ==========><>|lifecycle|<><==========
 
@@ -16,16 +16,23 @@ class DashboardPage extends Component {
     // ==========><>|lifecycle|<><==========
 
     render() {
-        routeChecker()
         return (
             <div>
-                <PageTitle title="Dashboard" />
+                <PageTitle title="Task List" />
 
-                <Link to="/">
-                    <Button>
-                        Back to home
-                    </Button>
-                </Link>
+                <Row>
+                    <Col md={6}>
+                        <div className="dashboard_panel">
+
+                        </div>
+                    </Col>
+
+                    <Col md={6}>
+                        <div className="dashboard_panel">
+
+                        </div>
+                    </Col>
+                </Row>
             </div>
         )
     }
@@ -48,4 +55,4 @@ const mapDispatchToProps = (dispatch) => {
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(DashboardPage)
+export default connect(mapStateToProps, mapDispatchToProps)(TaskListPage)

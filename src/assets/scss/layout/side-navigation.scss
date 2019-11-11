@@ -12,14 +12,36 @@
         width: 100%;
         display: flex;
         padding: 15px 0;
+        transition: .2s;
 
         svg{
             width: calc(100% - 30px);
             height: auto;
             margin: auto;
+            transition: .2s;
 
             rect, path{
                 fill: #ffffff
+            }
+        }
+
+        &:hover{
+            background: $secondary-accend;
+
+            svg{
+                rect, path{
+                    fill: darken(#ffffff, 20%);
+                }
+            }
+        }
+
+        &-active{
+            background: lighten($secondary, 15%);
+
+            svg{
+                rect, path{
+                    fill: lighten($secondary, 5%);
+                }
             }
         }
     }

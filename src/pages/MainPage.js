@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
 import { BrowserRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
-
+import { Container } from 'reactstrap'
 import AppRoute from './../router/AppRoute'
-import 'bootstrap/dist/css/bootstrap.css';
-import './../assets/css/main.css';
-import SideNavigation from './../components/SideNavigation';
+import 'bootstrap/dist/css/bootstrap.css'
+import './../assets/css/main.css'
+import SideNavigation from './../components/SideNavigation'
 
 class MainPage extends Component {
     render() {
@@ -15,7 +15,9 @@ class MainPage extends Component {
                     <SideNavigation />
                     <div className="dashboard_body">
                         <div className="dashboard_body-content">
-                            <AppRoute />
+                            <Container fluid={true}>
+                                <AppRoute />
+                            </Container>
                         </div>
                     </div>
                 </BrowserRouter>
