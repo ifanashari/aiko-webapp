@@ -1,0 +1,19 @@
+.task_list{
+    &-form{
+        &-body{
+            width: 100%;
+            height: fit-content;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+
+        &-item_half{
+            width: calc(50% - 15px);
+        }
+
+        &-item_full{
+            width: 100%;
+        }
+    }
+}

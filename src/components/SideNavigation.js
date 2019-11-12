@@ -11,10 +11,6 @@ export default class SideNavigation extends Component {
     }
 
     render() {
-        const tmpListIcon = [
-            "IDashboard",
-            "ITaskList",
-        ]
         return (
             <div className="side_nav">
                 <NavLink
