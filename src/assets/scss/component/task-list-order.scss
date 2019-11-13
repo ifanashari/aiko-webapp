@@ -1,0 +1,53 @@
+@import "./../base/config.scss";
+
+
+.tasklist_order{
+    width: 100%;
+
+    hr{
+        width: 90%;
+    }
+
+    &-item{
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        border-left: thick solid rgba(#ffffff, 0);
+
+        &-0{border-left: thick solid $gray}
+        &-1{border-left: thick solid $red}
+        &-2{border-left: thick solid $yellow}
+        &-3{border-left: thick solid $blue}
+
+        &-body{
+            width: calc(60% - 15px);
+            height: fit-content;
+
+            p{
+                margin: 0;
+            }
+        }
+
+        &-status{
+            width: calc(30% - 15px);
+            text-align: center;
+
+            &-done{color: $green}
+            &-not_done{color: $red}
+        }
+
+        &-control{
+            width: fit-content;
+
+            svg{
+                width: 15px;
+                height: 15px;
+
+                path{
+                    fill: #ffffff;
+                }
+            }
+        }
+    }
+}

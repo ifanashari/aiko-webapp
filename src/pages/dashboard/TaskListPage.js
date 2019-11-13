@@ -3,8 +3,10 @@ import { connect } from 'react-redux'
 import { Row, Col } from 'reactstrap'
 
 import { routeChecker } from './../../mixins/route-checker'
+
 import PageTitle from './../../components/PageTitle'
 import TaskListForm from './../../components/tasklist/TaskListForm'
+import TaskListOrder from './../../components/tasklist/TaskListOrder'
 
 class TaskListPage extends Component {
     // ==========><>|lifecycle|<><==========
@@ -20,14 +22,13 @@ class TaskListPage extends Component {
             <div>
                 <PageTitle title="Task List" />
 
-                <h6 className="section_title mb-4">Add Task</h6>
-
                 <Row>
                     <Col md={6}>
                         <TaskListForm />
                     </Col>
 
                     <Col md={6}>
+                        <TaskListOrder control={true} />
                     </Col>
                 </Row>
             </div>
