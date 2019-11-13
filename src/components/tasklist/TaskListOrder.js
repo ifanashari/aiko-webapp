@@ -39,13 +39,13 @@ class TaskListOrder extends Component {
     renderControl(status, index){
         if(status){
             return (
-                <Button color="danger">
+                <Button color="danger" onClick={this.tripUpdateTaskListStatus.bind(this, index)}>
                     <ICancel />
                 </Button>
             )
         } else {
             return (
-                <Button color="success">
+                <Button color="success" onClick={this.tripUpdateTaskListStatus.bind(this, index)}>
                     <ICorrect />
                 </Button>
             )
@@ -59,6 +59,10 @@ class TaskListOrder extends Component {
         }
 
         return false
+    }
+
+    tripUpdateTaskListStatus(index){
+        this.props.updateTaskListStatus(index)
     }
 
     render() {
@@ -107,12 +111,12 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        // addTaskList: (payload) => {
-        //     dispatch({
-        //         type: 'ADD_TASKLIST',
-        //         payload: payload
-        //     })
-        // },
+        updateTaskListStatus: (payload) => {
+            dispatch({
+                type: 'UPDATE_TASKLIST_STATUS',
+                payload: payload
+            })
+        },
     }
 }
 

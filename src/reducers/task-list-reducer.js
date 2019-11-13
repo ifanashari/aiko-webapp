@@ -55,12 +55,12 @@ const routeStateReducer = (state = intialState, action) => {
             state.newTaskList.task = action.payload.task
             state.newTaskList.desc = action.payload.desc
 
-            let tmpTaskList = state.taskList
-            tmpTaskList.push(state.newTaskList)
+            let addTmpTaskList = state.taskList
+            addTmpTaskList.push(state.newTaskList)
 
             return {
                 ...state,
-                taskList: tmpTaskList,
+                taskList: addTmpTaskList,
                 newTaskList: {
                     task: "",
                     desc: "",
@@ -76,6 +76,15 @@ const routeStateReducer = (state = intialState, action) => {
             return {
                 ...state,
                 newTaskList: tmpNewTaskList
+            }
+
+        case 'UPDATE_TASKLIST_STATUS':
+            let updateStatusTmpTaskList = state.taskList
+            updateStatusTmpTaskList[action.payload].status = !updateStatusTmpTaskList[action.payload].status
+
+            return {
+                ...state,
+                taskList: updateStatusTmpTaskList
             }
         default:
             return state
