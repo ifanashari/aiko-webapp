@@ -1,21 +1,26 @@
 import React, { Component } from 'react'
 import { BrowserRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
-
+import { Container } from 'reactstrap'
 import AppRoute from './../router/AppRoute'
-import 'bootstrap/dist/css/bootstrap.css';
-import './../assets/css/main.css';
+import 'bootstrap/dist/css/bootstrap.css'
+import './../assets/css/main.css'
+import SideNavigation from './../components/SideNavigation'
 
 class MainPage extends Component {
     render() {
         if(this.props.routeState.dashboardLayout){
             return (
-                <div>
-                    dashboard
-                    <BrowserRouter>
-                        <AppRoute />
-                    </BrowserRouter>
-                </div>
+                <BrowserRouter>
+                    <SideNavigation />
+                    <div className="dashboard_body">
+                        <div className="dashboard_body-content">
+                            <Container fluid={true}>
+                                <AppRoute />
+                            </Container>
+                        </div>
+                    </div>
+                </BrowserRouter>
             )
         } else{
             return (

@@ -1,0 +1,23 @@
+@import './../base/config.scss';
+
+body{
+    // background: $secondary-light;
+
+    .dashboard_body{
+        width: 100%;
+        height: fit-content;
+        display: flex;
+        padding-top: 15px;
+
+        &-content{
+            position: relative;
+            width: calc(100% - 50px);
+            height: fit-content;
+            margin-left: auto;
+
+            .container-fluid{
+                position: relative;
+            }
+        }
+    }
+}

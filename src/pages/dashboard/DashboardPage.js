@@ -3,6 +3,7 @@ import { routeChecker } from './../../mixins/route-checker'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { Button } from 'reactstrap'
+import PageTitle from './../../components/PageTitle'
 
 class DashboardPage extends Component {
 
@@ -18,7 +19,8 @@ class DashboardPage extends Component {
         routeChecker()
         return (
             <div>
-                Dashboard page
+                <PageTitle title="Dashboard" />
+
                 <Link to="/">
                     <Button>
                         Back to home
