@@ -16,7 +16,7 @@ const intialState = {
     newTaskList: {
         task: "",
         desc: "",
-        status: "",
+        status: false,
         type: 0,
     }
 }
