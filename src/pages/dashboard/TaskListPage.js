@@ -22,15 +22,13 @@ class TaskListPage extends Component {
             <div>
                 <PageTitle title="Task List" />
 
-                <h6 className="section_title mb-4">Add Task</h6>
-
                 <Row>
                     <Col md={6}>
                         <TaskListForm />
                     </Col>
 
                     <Col md={6}>
-                        <TaskListOrder />
+                        <TaskListOrder control={true} />
                     </Col>
                 </Row>
             </div>

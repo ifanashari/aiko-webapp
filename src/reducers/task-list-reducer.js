@@ -11,7 +11,35 @@
 
 
 const intialState = {
-    taskList: [],
+    taskList: [
+        {
+            task: "Alpha Bravo",
+            desc: "Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet",
+            status: false,
+            type: 1,
+        },
+
+        {
+            task: "Juliet Kilo Lima",
+            desc: "Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet",
+            status: true,
+            type: 0,
+        },
+
+        {
+            task: "Charlie Delta Echo Foxtrot Golf Hotel India",
+            desc: "Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet",
+            status: false,
+            type: 3,
+        },
+
+        {
+            task: "Mike November Oscar",
+            desc: "Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet",
+            status: true,
+            type: 2,
+        }
+    ],
 
     newTaskList: {
         task: "",
