@@ -11,14 +11,7 @@
 
 
 const intialState = {
-    taskList: [
-        {
-            task: "",
-            desc: "",
-            status: "",
-            type: 0,
-        }
-    ],
+    taskList: [],
 
     newTaskList: {
         task: "",
@@ -30,13 +23,32 @@ const intialState = {
 
 const routeStateReducer = (state = intialState, action) => {
     switch (action.type) {
-        case 'ADD_TASK':
-            // return {
-            //     ...state,
-            //     TAS: action.payload
-            // }
-            return state
+        case 'ADD_TASKLIST':
+            state.newTaskList.task = action.payload.task
+            state.newTaskList.desc = action.payload.desc
 
+            let tmpTaskList = state.taskList
+            tmpTaskList.push(state.newTaskList)
+
+            return {
+                ...state,
+                taskList: tmpTaskList,
+                newTaskList: {
+                    task: "",
+                    desc: "",
+                    status: "",
+                    type: 0,
+                }
+            }
+
+        case 'UPDATE_NEW_TASKLIST_TYPE':
+            let tmpNewTaskList = state.newTaskList
+            tmpNewTaskList.type = action.payload
+
+            return {
+                ...state,
+                newTaskList: tmpNewTaskList
+            }
         default:
             return state
     }

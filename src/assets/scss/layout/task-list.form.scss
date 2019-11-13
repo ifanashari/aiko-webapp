@@ -1,3 +1,5 @@
+@import "./../base/config.scss";
+
 .task_list{
     &-form{
         &-body{
@@ -6,6 +8,7 @@
             display: flex;
             flex-wrap: wrap;
             justify-content: space-between;
+            align-items: center;
         }
 
         &-item_half{
@@ -15,5 +18,26 @@
         &-item_full{
             width: 100%;
         }
+
+        &-type{
+            width: 100%;
+            height: fit-content;
+            display: flex;
+
+            span{
+                width: fit-content;
+                height: fit-content;
+                padding: 25px;
+                margin-left: auto;
+                color: #ffffff;
+                font-weight: bold;
+            }
+
+        }
+
+        &-type-0{span{background: $gray;}}
+        &-type-1{span{background: $red;}}
+        &-type-2{span{background: $yellow;}}
+        &-type-3{span{background: $blue;}}
     }
 }

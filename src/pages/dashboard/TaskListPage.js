@@ -1,13 +1,12 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { Row, Col, Form, FormGroup, Label, Input } from 'reactstrap'
-import { routeChecker } from './../../mixins/route-checker'
+import { Row, Col } from 'reactstrap'
 
+import { routeChecker } from './../../mixins/route-checker'
 import PageTitle from './../../components/PageTitle'
-import RadioButton from './../../components/tasklist/RadioButton'
+import TaskListForm from './../../components/tasklist/TaskListForm'
 
 class TaskListPage extends Component {
-
     // ==========><>|lifecycle|<><==========
 
     componentDidMount(){
@@ -25,37 +24,10 @@ class TaskListPage extends Component {
 
                 <Row>
                     <Col md={6}>
-                        <div className="dashboard_panel task_list-form">
-                            <Form>
-                                <div className="task_list-form-body">
-                                    <FormGroup className="task_list-form-item_half">
-                                        <Label>Task Title</Label>
-                                        <Input
-                                            type="text"
-                                            placeholder="Your Task"
-                                        />
-                                    </FormGroup>
-
-                                    <FormGroup className="task_list-form-item_full">
-                                        <Label>Task Description</Label>
-                                        <Input
-                                            type="textarea"
-                                            placeholder="Task Description"
-                                        />
-                                    </FormGroup>
-
-                                    <div className="task_list-form-item_full">
-                                        <RadioButton />
-                                    </div>
-                                </div>
-                            </Form>
-                        </div>
+                        <TaskListForm />
                     </Col>
 
                     <Col md={6}>
-                        <div className="dashboard_panel">
-
-                        </div>
                     </Col>
                 </Row>
             </div>
@@ -65,7 +37,7 @@ class TaskListPage extends Component {
 
 const mapStateToProps = (state) => {
     return{
-        routeState: state.routeState
+        routeState: state.routeState,
     }
 }
 
