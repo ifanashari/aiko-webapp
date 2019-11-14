@@ -28,7 +28,7 @@ class TaskListPage extends Component {
                     </Col>
 
                     <Col md={6}>
-                        <TaskListOrder control={true} />
+                        <TaskListOrder dataList={this.props.taskList.taskList} control={false} />
                     </Col>
                 </Row>
             </div>
@@ -39,6 +39,7 @@ class TaskListPage extends Component {
 const mapStateToProps = (state) => {
     return{
         routeState: state.routeState,
+        taskList: state.taskList,
     }
 }
 

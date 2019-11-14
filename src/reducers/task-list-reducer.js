@@ -86,6 +86,16 @@ const routeStateReducer = (state = intialState, action) => {
                 ...state,
                 taskList: updateStatusTmpTaskList
             }
+
+        case 'REMOVE_TASKLIST':
+            let removeTmpTaskList = state.taskList
+            removeTmpTaskList.splice(action.payload, 1)
+
+            return {
+                ...state,
+                taskList: removeTmpTaskList
+            }
+
         default:
             return state
     }

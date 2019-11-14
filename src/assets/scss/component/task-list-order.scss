@@ -39,7 +39,8 @@
 
         &-control{
             width: fit-content;
-
+            display: flex;
+            flex-direction: column;
             svg{
                 width: 15px;
                 height: 15px;
@@ -47,6 +48,11 @@
                 path{
                     fill: #ffffff;
                 }
+            }
+
+            p{
+                margin: 0;
+                cursor: pointer;
             }
         }
     }

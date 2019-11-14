@@ -28,7 +28,15 @@ class TaskListOrder extends Component {
         if(this.props.control){
             return (
                 <div className="tasklist_order-item-control">
-                    {this.renderControl(status, index)}
+                    <Button
+                        className="mb-3 mx-auto"
+                        color={status ? "danger" : "success"}
+                        onClick={this.tripUpdateTaskListStatus.bind(this, index)}
+                    >
+                        {this.renderControl(status)}
+                    </Button>
+
+                    <p className="text-danger" onClick={this.tripRemoveTaskList.bind(this, index)}>remove</p>
                 </div>
             )
         }
@@ -38,17 +46,9 @@ class TaskListOrder extends Component {
 
     renderControl(status, index){
         if(status){
-            return (
-                <Button color="danger" onClick={this.tripUpdateTaskListStatus.bind(this, index)}>
-                    <ICancel />
-                </Button>
-            )
+            return (<ICancel />)
         } else {
-            return (
-                <Button color="success" onClick={this.tripUpdateTaskListStatus.bind(this, index)}>
-                    <ICorrect />
-                </Button>
-            )
+            return (<ICorrect />)
         }
     }
 
@@ -65,21 +65,24 @@ class TaskListOrder extends Component {
         this.props.updateTaskListStatus(index)
     }
 
+    tripRemoveTaskList(index){
+        this.props.removeTaskList(index)
+    }
+
     render() {
         return (
             <div className="dashboard_panel">
                 <div className="tasklist_order">
                     {
-                        this.props.taskList.taskList.map((data, index) => {
+                        this.props.dataList.map((data, index) => {
                             return (
-                                <div>
+                                <div key={index}>
                                     <div className={
-                                            classNames(
-                                                "tasklist_order-item mb-3 pl-3",
-                                                `tasklist_order-item-${data.type}`
-                                            )
-                                        }
-                                    key={index}>
+                                        classNames(
+                                            "tasklist_order-item mb-3 pl-3",
+                                            `tasklist_order-item-${data.type}`
+                                        )
+                                    }>
                                         <div className="tasklist_order-item-body">
                                             <h5 className="font-weight-bold">{titleTrim(data.task)}</h5>
                                             <p>{descTrim(data.desc)}</p>
@@ -114,6 +117,13 @@ const mapDispatchToProps = (dispatch) => {
         updateTaskListStatus: (payload) => {
             dispatch({
                 type: 'UPDATE_TASKLIST_STATUS',
+                payload: payload
+            })
+        },
+
+        removeTaskList: (payload) => {
+            dispatch({
+                type: 'REMOVE_TASKLIST',
                 payload: payload
             })
         },

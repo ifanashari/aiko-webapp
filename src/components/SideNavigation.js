@@ -3,6 +3,7 @@ import { NavLink } from 'react-router-dom'
 
 import IDashboard from './../components/icons/IDashboard'
 import ITaskList from './../components/icons/ITaskList'
+import ICategory from './../components/icons/ICategory'
 
 export default class SideNavigation extends Component {
 
@@ -29,6 +30,15 @@ export default class SideNavigation extends Component {
                     activeClassName="side_nav-list_item-active"
                 >
                     <ITaskList />
+                </NavLink>
+
+                <NavLink
+                    to="/dashboard/task-by-category"
+                    exact={true}
+                    className="side_nav-list_item"
+                    activeClassName="side_nav-list_item-active"
+                >
+                    <ICategory />
                 </NavLink>
             </div>
         )
