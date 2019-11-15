@@ -40,4 +40,39 @@
         &-type-2{span{background: $yellow;}}
         &-type-3{span{background: $blue;}}
     }
+
+    &-preview{
+        width: 100%;
+        height: fit-content;
+        position: relative;
+        display: flex;
+        align-items: center;
+
+        &-chart{
+            width: 40%;
+
+            // canvas{
+            //     width: 100% !important;
+            //     height: auto !important;
+            // }
+        }
+
+        &-legend{
+            width: 60%;
+            height: fit-content;
+
+            &-item{
+                width: 100%;
+                height: fit-content;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+
+                &-1{border-left: thick solid $red;}
+                &-2{border-left: thick solid $yellow;}
+                &-3{border-left: thick solid $blue;}
+                &-0{border-left: thick solid $gray;}
+            }
+        }
+    }
 }

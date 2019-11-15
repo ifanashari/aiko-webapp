@@ -5,10 +5,9 @@ import { Row, Col } from 'reactstrap'
 import { routeChecker } from './../../mixins/route-checker'
 
 import PageTitle from './../../components/PageTitle'
-import TaskListForm from './../../components/tasklist/TaskListForm'
-import TaskListFormPreview from './../../components/tasklist/TaskListFormPreview'
+import TaskListOrder from './../../components/tasklist/TaskListOrder'
 
-class TaskListPage extends Component {
+class TaskListByCategoryPage extends Component {
     // ==========><>|lifecycle|<><==========
 
     componentDidMount(){
@@ -20,15 +19,25 @@ class TaskListPage extends Component {
     render() {
         return (
             <div>
-                <PageTitle title="Task List" />
+                <PageTitle title="Task List By Category" />
 
                 <Row className="mb-4">
                     <Col md={6}>
-                        <TaskListForm />
+                        <TaskListOrder dataList={this.props.taskList.taskList} control={true} />
                     </Col>
 
                     <Col md={6}>
-                        <TaskListFormPreview />
+                        <TaskListOrder dataList={this.props.taskList.taskList} control={true} />
+                    </Col>
+                </Row>
+
+                <Row>
+                    <Col md={6}>
+                        <TaskListOrder dataList={this.props.taskList.taskList} control={true} />
+                    </Col>
+
+                    <Col md={6}>
+                        <TaskListOrder dataList={this.props.taskList.taskList} control={true} />
                     </Col>
                 </Row>
             </div>
@@ -54,4 +63,4 @@ const mapDispatchToProps = (dispatch) => {
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(TaskListPage)
+export default connect(mapStateToProps, mapDispatchToProps)(TaskListByCategoryPage)

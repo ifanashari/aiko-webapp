@@ -33,7 +33,7 @@ export default class SideNavigation extends Component {
                 </NavLink>
 
                 <NavLink
-                    to="/dashboard/task-by-category"
+                    to="/dashboard/task-list-by-category"
                     exact={true}
                     className="side_nav-list_item"
                     activeClassName="side_nav-list_item-active"
