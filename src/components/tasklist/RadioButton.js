@@ -3,57 +3,60 @@ import { connect } from 'react-redux'
 import classNames from 'classnames'
 
 class RadioButton extends Component {
+    constructor(props){
+        super(props)
 
-    tripUpdateNewTaskListType(payload){
-        this.props.updateNewTaskListType(payload)
+        this.activeRadioButton.bind(this)
+    }
+
+    tripActiveRadio(){
+        if(this.props.form){
+            this.props.onUpdateNewTaskListType()
+        } else{
+            this.props.onUpdateTaskListCategoryType()
+        }
+    }
+
+    activeRadioButton(type){
+        let tmpResultChecker = false
+        let tmpResult = ''
+
+        if(this.props.form){
+            if(this.props.taskList.newTaskList.type === type){
+                tmpResultChecker = true
+            } else {
+                tmpResultChecker = false
+            }
+        } else {
+            if(this.props.taskList.taskListCategory === type){
+                tmpResultChecker = true
+            } else {
+                tmpResultChecker = false
+            }
+        }
+
+        if(tmpResultChecker){
+            tmpResult = `radio-control-${type}-active`
+        } else{
+            tmpResult = ''
+        }
+
+        return tmpResult
     }
 
     render() {
         return (
-            <div className="radio">
-                <div>
-                    <div className={
-                        classNames(
-                            'radio-control radio-control-priority mx-auto',
-                            (this.props.taskList.newTaskList.type === 1 ? 'radio-control-priority-active' : ''))
-                        }
-                        onClick={this.tripUpdateNewTaskListType.bind(this, 1)}
-                        ></div>
-                    <span className="font-weight-bold mt-3">Priority</span>
-                </div>
-
-                <div>
-                    <div className={
-                        classNames(
-                            'radio-control radio-control-less_important mx-auto',
-                            (this.props.taskList.newTaskList.type === 2 ? 'radio-control-less_important-active' : ''))
-                        }
-                        onClick={this.tripUpdateNewTaskListType.bind(this, 2)}
-                        ></div>
-                    <span className="font-weight-bold mt-3">Less Important</span>
-                </div>
-
-                <div>
-                    <div className={
-                        classNames(
-                            'radio-control radio-control-minor mx-auto',
-                            (this.props.taskList.newTaskList.type === 3 ? 'radio-control-minor-active' : ''))
-                        }
-                        onClick={this.tripUpdateNewTaskListType.bind(this, 3)}
-                        ></div>
-                    <span className="font-weight-bold mt-3">Minor</span>
-                </div>
-
-                <div>
-                    <div className={
-                        classNames(
-                            'radio-control radio-control-not_important mx-auto',
-                            (this.props.taskList.newTaskList.type === 0 ? 'radio-control-not_important-active' : ''))
-                        }
-                        onClick={this.tripUpdateNewTaskListType.bind(this, 0)}
-                        ></div>
-                    <span className="font-weight-bold mt-3">Not Important</span>
-                </div>
+            <div>
+                <div className={
+                    classNames(
+                            'radio-control mx-auto',
+                            `radio-control-${this.props.type}`,
+                            this.activeRadioButton(this.props.type)
+                        )
+                    }
+                    onClick={this.tripActiveRadio.bind(this)}
+                    />
+                <span className="font-weight-bold mt-3">{this.props.text}</span>
             </div>
         )
     }
@@ -67,12 +70,6 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        updateNewTaskListType: (payload) => {
-            dispatch({
-                type: 'UPDATE_NEW_TASKLIST_TYPE',
-                payload: payload
-            })
-        },
     }
 }
 

@@ -6,6 +6,7 @@ import { routeChecker } from './../../mixins/route-checker'
 
 import PageTitle from './../../components/PageTitle'
 import TaskListOrder from './../../components/tasklist/TaskListOrder'
+import RadioButton from './../../components/tasklist/RadioButton'
 
 class TaskListByCategoryPage extends Component {
     // ==========><>|lifecycle|<><==========
@@ -16,10 +17,27 @@ class TaskListByCategoryPage extends Component {
 
     // ==========><>|lifecycle|<><==========
 
+    tripUpdateTaskListCategoryType(payload){
+        this.props.updateTaskListCategoryType(payload)
+    }
+
     render() {
         return (
             <div>
                 <PageTitle title="Task List By Category" />
+
+                <Row>
+                    <Col md={12}>
+                        <div className="dashboard_panel">
+                            <div className="task-list-category-container">
+                                <RadioButton text="Priority" type={1} form={false} onUpdateTaskListCategoryType={this.tripUpdateTaskListCategoryType.bind(this, 1)} />
+                                <RadioButton text="Less Important" type={2} form={false} onUpdateTaskListCategoryType={this.tripUpdateTaskListCategoryType.bind(this, 2)} />
+                                <RadioButton text="Minor" type={3} form={false} onUpdateTaskListCategoryType={this.tripUpdateTaskListCategoryType.bind(this, 3)} />
+                                <RadioButton text="Not Important" type={0} form={false} onUpdateTaskListCategoryType={this.tripUpdateTaskListCategoryType.bind(this, 0)} />
+                            </div>
+                        </div>
+                    </Col>
+                </Row>
 
                 <Row className="mb-4">
                     <Col md={6}>
@@ -57,6 +75,13 @@ const mapDispatchToProps = (dispatch) => {
         updateLayout: (payload) => {
             dispatch({
                 type: 'UPDATE_LAYOUT',
+                payload: payload
+            })
+        },
+
+        updateTaskListCategoryType: (payload) => {
+            dispatch({
+                type: 'UPDATE_TASKLIST_CATEGORY_TYPE',
                 payload: payload
             })
         },

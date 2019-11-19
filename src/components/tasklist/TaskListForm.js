@@ -40,6 +40,10 @@ class TaskListForm extends Component {
         this.props.addTaskList(tmpNewTaskList)
     }
 
+    tripUpdateNewTaskListType(payload){
+        this.props.updateNewTaskListType(payload)
+    }
+
     render() {
         return (
             <div className="dashboard_panel task_list-form">
@@ -77,7 +81,12 @@ class TaskListForm extends Component {
                         </FormGroup>
 
                         <div className="task_list-form-item_full mb-3">
-                            <RadioButton />
+                            <div className="radio">
+                                <RadioButton text="Priority" type={1} form={true} onUpdateNewTaskListType={this.tripUpdateNewTaskListType.bind(this, 1)} />
+                                <RadioButton text="Less Imoprtant" type={2} form={true} onUpdateNewTaskListType={this.tripUpdateNewTaskListType.bind(this, 2)} />
+                                <RadioButton text="Minor" type={3} form={true} onUpdateNewTaskListType={this.tripUpdateNewTaskListType.bind(this, 3)} />
+                                <RadioButton text="Not Important" type={0} form={true} onUpdateNewTaskListType={this.tripUpdateNewTaskListType.bind(this, 0)} />
+                            </div>
                         </div>
 
                         <div className="task_list-form-item_full">
@@ -107,6 +116,12 @@ const mapDispatchToProps = (dispatch) => {
         addTaskList: (payload) => {
             dispatch({
                 type: 'ADD_TASKLIST',
+                payload: payload
+            })
+        },
+        updateNewTaskListType: (payload) => {
+            dispatch({
+                type: 'UPDATE_NEW_TASKLIST_TYPE',
                 payload: payload
             })
         },
