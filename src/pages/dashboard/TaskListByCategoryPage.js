@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { Row, Col } from 'reactstrap'
 
 import { routeChecker } from './../../mixins/route-checker'
+import { filterByCategory } from './../../mixins/task-list'
 
 import PageTitle from './../../components/PageTitle'
 import TaskListOrder from './../../components/tasklist/TaskListOrder'
@@ -40,22 +41,15 @@ class TaskListByCategoryPage extends Component {
                 </Row>
 
                 <Row className="mb-4">
-                    <Col md={6}>
-                        <TaskListOrder dataList={this.props.taskList.taskList} control={true} />
-                    </Col>
-
-                    <Col md={6}>
-                        <TaskListOrder dataList={this.props.taskList.taskList} control={true} />
-                    </Col>
-                </Row>
-
-                <Row>
-                    <Col md={6}>
-                        <TaskListOrder dataList={this.props.taskList.taskList} control={true} />
-                    </Col>
-
-                    <Col md={6}>
-                        <TaskListOrder dataList={this.props.taskList.taskList} control={true} />
+                    <Col md={12}>
+                        <TaskListOrder dataList={
+                            filterByCategory(
+                                    this.props.taskList.taskList,
+                                    this.props.taskList.taskListCategory
+                                )
+                            }
+                            control={true}
+                        />
                     </Col>
                 </Row>
             </div>

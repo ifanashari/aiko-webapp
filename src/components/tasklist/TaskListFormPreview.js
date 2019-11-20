@@ -3,7 +3,7 @@ import { Doughnut } from 'react-chartjs-2'
 import { connect } from 'react-redux'
 import classNames from 'classnames'
 
-import { filterByType } from './../../mixins/task-list'
+import { taskListCategoryCounter } from './../../mixins/task-list'
 
 class TaskListFormPreview extends Component {
     constructor(props){
@@ -24,10 +24,10 @@ class TaskListFormPreview extends Component {
     computedPreviewData(){
         let tmpTasklist = this.props.taskList.taskList
 
-        let tmpPriority = filterByType(tmpTasklist, 1)
-        let tmpLessImportant = filterByType(tmpTasklist, 2)
-        let tmpMinor = filterByType(tmpTasklist, 3)
-        let tmpNotImportant = filterByType(tmpTasklist, 0)
+        let tmpPriority = taskListCategoryCounter(tmpTasklist, 1)
+        let tmpLessImportant = taskListCategoryCounter(tmpTasklist, 2)
+        let tmpMinor = taskListCategoryCounter(tmpTasklist, 3)
+        let tmpNotImportant = taskListCategoryCounter(tmpTasklist, 0)
 
         return {
             datasets: [
@@ -93,7 +93,7 @@ class TaskListFormPreview extends Component {
 
                                         <h1>
                                             {
-                                                filterByType(this.props.taskList.taskList, data.type)
+                                                taskListCategoryCounter(this.props.taskList.taskList, data.type)
                                             }
                                         </h1>
                                     </div>

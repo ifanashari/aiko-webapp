@@ -66,7 +66,7 @@ const routeStateReducer = (state = intialState, action) => {
                 newTaskList: {
                     task: "",
                     desc: "",
-                    status: "",
+                    status: false,
                     type: 0,
                 }
             }

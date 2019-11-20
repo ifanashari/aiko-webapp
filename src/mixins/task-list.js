@@ -1,11 +1,18 @@
-const filterByType = (data, type) => {
-    let tmpData = data.filter((data) => {
-        return data.type === type
-    })
+const taskListCategoryCounter = (data, type) => {
+    let tmpData = filterByCategory(data, type)
 
     return tmpData.length
 }
 
+const filterByCategory = (data, type) => {
+    let tmpData = data.filter((data) => {
+        return data.type === type
+    })
+
+    return tmpData
+}
+
 export {
-    filterByType
+    taskListCategoryCounter,
+    filterByCategory
 }
