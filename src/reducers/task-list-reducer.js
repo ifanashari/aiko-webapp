@@ -46,7 +46,9 @@ const intialState = {
         desc: "",
         status: false,
         type: 0,
-    }
+    },
+
+    taskListCategory: 0,
 }
 
 const routeStateReducer = (state = intialState, action) => {
@@ -64,7 +66,7 @@ const routeStateReducer = (state = intialState, action) => {
                 newTaskList: {
                     task: "",
                     desc: "",
-                    status: "",
+                    status: false,
                     type: 0,
                 }
             }
@@ -94,6 +96,12 @@ const routeStateReducer = (state = intialState, action) => {
             return {
                 ...state,
                 taskList: removeTmpTaskList
+            }
+
+        case 'UPDATE_TASKLIST_CATEGORY_TYPE':
+            return {
+                ...state,
+                taskListCategory: action.payload
             }
 
         default:
